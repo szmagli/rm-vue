@@ -1,0 +1,92 @@
+@import '~$scss/_colors';
+@import '~$scss/_mixins';
+
+.nav{
+	$breakpoint: 820px;
+	width: 100%;
+	background: $nav-bg;
+	@include flex-centered;
+
+	@media screen and (max-width: $breakpoint){
+		flex-direction: column;
+	}
+
+	.nav-toggle{
+		display: none;
+		flex-direction: column;
+		
+		cursor: pointer;
+		width: 30px;
+		height: 30px;
+		margin: 10px;
+		border: solid 1px $main;
+		line-height: 10px;
+		border-radius: 4px;
+
+		@media screen and (max-width: $breakpoint){
+			@include flex-centered;
+		}
+	}
+
+	.slide-enter-active, .slide-leave-active {
+		transition: max-height .8s ease-out, opacity .8s ease-out;
+		overflow: hidden;
+	}
+
+	.slide-enter, .slide-leave-to {
+		max-height: 0;
+		opacity: 0;
+		
+	}
+	.slide-enter-to, .slide-leave {
+		max-height: 500px;
+	}
+	
+	.nav-content{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		padding: 15px;
+		max-width: 1100px;
+		width: 100%;
+
+		@media screen and (max-width: $breakpoint){
+			flex-direction: column;
+			&.nav-mobile-hidden{
+				display: none;
+			}
+		}
+
+		.nav-brand{
+			min-width: 180px;
+
+			.nav-logo{
+				max-height: 60px;
+				width: auto;
+			}
+		}
+
+		.nav-item{
+			text-decoration: none;
+			color: rgba(0,0,0,.5);
+			text-transform: uppercase;
+			font-weight: 500;
+			padding: .5rem;
+
+			@media screen and (max-width: $breakpoint){
+				width: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+
+			&:hover{
+			  	opacity: .5;
+			}
+		
+			transition: .5s;
+		}
+	}
+
+}
